@@ -1,0 +1,34 @@
+<h1 class="text-center">mA(I)estro</h1>
+
+  <div class="text-center container p-3">
+    Dobrodošli u mA(I)estro aplikaciju. Vaš virtualni asistent u prepoznavanju instrumenata.
+    Molimo Vas priložite datoteku u .wav formatu.
+  </div>
+
+  <br>
+
+  <div class="container text-center">
+    <img src="assets/images/pexels-pixabay-45243.jpg" height="120px" width="120px">
+  </div>
+  
+
+  <br>
+
+  <div class="text-center container m-5">
+    <input class="form-control m-5" type="file" accept="audio/wav"
+        (change)="onChange($event)">
+  
+    <button (click)="onUpload()"
+      class="btn btn-success">
+      Upload
+    </button>
+  </div>
+
+  <div class="text-center container" *ngIf="processing">
+    Zahtjev se obrađuje
+  </div>
+
+  <div class="container m-3" *ngIf="instruments != null && processing == false">
+    <div>Prepoznati instrumenti:</div>
+    <li *ngFor="let item of instrumentsArr">{{item}}</li>
+  </div>
